@@ -1,11 +1,14 @@
- export async function ap1(country) {
+
+
+ export default async function ap1(city,country) {
     const ApiKey = import.meta.env.VITE_WEATHER_API_KEY;
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${country}&appid=${ApiKey}`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${ApiKey}`;
     try {
-        if (typeof(country) !== 'string') {
-            throw new Error('Erreur réseau');
-        }
+         if (typeof(city) !== 'string') {
+         throw new Error('Erreur réseau');
+         }
         const reponse = await fetch(url);
+        console.log(reponse);
         if (!reponse.ok) {
             throw new Error('Erreur réseau');
         }
@@ -13,7 +16,6 @@
         if (data.length === 0) {
             throw new Error('Not at city');
         }
-        console.log(data);
         return (data);
     } catch (error) {
         console.error('Problème :', error);

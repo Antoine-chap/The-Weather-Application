@@ -6,8 +6,44 @@
   <title>The Weather Application</title>
   <script defer type='module' src="script.js"></script>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <header id="header">
+    <h1 id="title">The Weather Application</h1>
+    <input type="text" id="inputCity" placeholder="City"/>
+    <input type="text" id="inputCountry" placeholder="Country code"/>
+    <button id="button">click on me</button>
+  </header>
+  <main id="main">
+    <div id="contener">
+      <h2>city country</h2>
+      <div id="day1"></div> date
+        <div class="dayinfo"></div>heure
+        <div class="dayinfo"></div>min
+        <div class="dayinfo"></div>max
+        <div class="dayinfo"></div>
+        <div class="dayinfo"></div>
+      <div id="day2"></div>
+        <div class="dayinfo"></div>
+        <div class="dayinfo"></div>
+        <div class="dayinfo"></div>
+        <div class="dayinfo"></div>
+        <div class="dayinfo"></div>
+      <div id="day3"></div>
+        <div class="dayinfo"></div>
+      <div id="day4"></div>
+      <div id="day5"></div>
+      <canvas id="graphique" width="400" height="400"></canvas>
+      <img id="image" src="" alt="">
+    </div>
+  </main>
+  <footer>
+    <div classe="source"></div>
+      <div id="src1"></div>
+      <div id="src2"></div>
+      <div id="src3"></div>
+  </footer>
   
 </body>
 </html>
