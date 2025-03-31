@@ -8,7 +8,11 @@ button.addEventListener('click', async () => {
     const inputCountry = document.getElementById('inputCountry');
     const inputCityValue = inputCity.value;
     const inputCountryValue = inputCountry.value;
-    const result = await ap1(inputCityValue,inputCountryValue);
+    let result = getWeatherFromLocalStorage(inputCityValue, inputCountryValue);
+    
+    if (!result) {
+        result = await ap1(inputCityValue, inputCountryValue);
+    }
     const ctx = document.createElement('canvas');
     ctx.className = 'card-ctx';
     cardsContainer.appendChild(ctx);
@@ -34,6 +38,7 @@ button.addEventListener('click', async () => {
   });
 
   await Cards(result);
+  checkAndAddDeleteButton();
 
 })
 }
@@ -56,6 +61,10 @@ async function Arr(result) {
 async function Cards(result) {
   const cardsContainer = document.getElementById('cardsContainer');
   const forecastsByDay = {};
+  const cityName = document.getElementById('inputCity').value;
+  const countryName = document.getElementById('inputCountry').value;
+
+  const storageKey = `weather_${cityName}_${countryName}`;
 
   result.list.forEach(forecast => {
     const date = forecast.dt_txt.split(' ')[0];
@@ -66,6 +75,7 @@ async function Cards(result) {
     forecastsByDay[date].push(forecast);
   });
   
+  localStorage.setItem(storageKey, JSON.stringify(result));
 
 
   for (const [date, forecasts] of Object.entries(forecastsByDay)) {
@@ -121,10 +131,50 @@ async function Cards(result) {
       forecastItem.appendChild(tempElement);
 
       cardContent.appendChild(forecastItem);
+
+      
     });
 
-    card.appendChild(cardContent);
+    
 
+    card.appendChild(cardContent);
     cardsContainer.appendChild(card);
   }
+}
+
+function checkAndAddDeleteButton() {
+  const cardsContainer = document.getElementById('cardsContainer');
+  const deleteButton = document.getElementById('deleteButton');
+
+  if (cardsContainer.children.length > 0) {
+    if (!deleteButton) {
+      const newDeleteButton = document.createElement('button');
+      newDeleteButton.textContent = 'Supprimer';
+      newDeleteButton.className = 'delete-button';
+      newDeleteButton.id = 'deleteButton';
+      newDeleteButton.addEventListener('click', () => {
+        cardsContainer.innerHTML = ''; 
+        localStorage.removeItem(`weather_${document.getElementById('inputCity').value}_${document.getElementById('inputCountry').value}`);
+        newDeleteButton.remove(); 
+      });
+
+      const submitButton = document.getElementById('button');
+      submitButton.parentNode.insertBefore(newDeleteButton, submitButton.nextSibling);
+    }
+  } else if (deleteButton) {
+    deleteButton.remove(); 
+  }
+}
+
+
+
+export function getWeatherFromLocalStorage(city, country) {
+  const storageKey = `weather_${city}_${country}`;
+  const savedData = localStorage.getItem(storageKey);
+  
+  if (savedData) {
+    return JSON.parse(savedData);
+  }
+  
+  return null;
 }
