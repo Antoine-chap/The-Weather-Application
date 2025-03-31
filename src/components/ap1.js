@@ -8,7 +8,6 @@
          throw new Error('Erreur réseau');
          }
         const reponse = await fetch(url);
-        console.log(reponse);
         if (!reponse.ok) {
             throw new Error('Erreur réseau');
         }
@@ -21,14 +20,3 @@
         console.error('Problème :', error);
     }
 };
-
-
-
-
-
-// async function test() {
-//     let res = await ap1('rome');
-//     // console.log(res[0].name,res[0].lat,res[0].lon);
-// }
-// // console.log(ap1('rome'));
-// test();
