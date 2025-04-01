@@ -34,8 +34,15 @@ jobs:
       - name: Vérifier les variables après le build
         run: npm run build && cat .env
 
+      - name: Configure vite
+        run: |
+            echo 'export default {
+            base: "/${{ github.event.repository.name }}/"
+            }' > vite.config.js
+
       - name: Déployer sur GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # Déploie sur cette branche
           folder: dist  # Dossier de build généré par Vite
+      
