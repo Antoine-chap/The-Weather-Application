@@ -1,0 +1,16 @@
+@import "./cards.css";
+@import "./header.css";
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff3e0; 
+    color: #444;
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    padding: 20px;
+}
+

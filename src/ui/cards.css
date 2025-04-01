@@ -1,52 +1,3 @@
-
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #fff3e0; 
-    color: #444;
-    margin: 0;
-    padding: 0;
-}
-
-#header {
-    background-color: #ff7043; 
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
-
-#title {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-#inputCity, #inputCountry {
-    padding: 12px;
-    font-size: 16px;
-    border: 2px solid #ffb74d; 
-    border-radius: 6px;
-    margin-right: 10px;
-    width: 200px;
-}
-
-#button {
-    padding: 12px 24px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    background-color: #ff9800; 
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#button:hover {
-    background-color: #e68500;
-}
-
-#main {
-    padding: 20px;
-}
-
 #cardsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -118,17 +69,3 @@ body {
     border: 2px solid #ffb74d;
     border-radius: 10px;
 }
-
-.delete-button {
-    background-color: red;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px;
-  }
-  
-  .delete-button:hover {
-    background-color: darkred;
-  }
-  

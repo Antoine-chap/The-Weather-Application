@@ -1,6 +1,4 @@
-
-
- export default async function ap1(city,country) {
+export default async function WeatherApi(city,country) {
     const ApiKey = import.meta.env.VITE_WEATHER_API_KEY;
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&units=metric&appid=${ApiKey}`;
     try {
