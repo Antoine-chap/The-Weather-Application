@@ -47,5 +47,5 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-            VITE_WEATHER_API_KEY: ${{ secrets.VITE_WEATHER_API_KEY }}
-            publish_dir: ./dist
+          github_token: ${{ secrets.VITE_WEATHER_API_KEY }}
+          publish_dir: ./dist
