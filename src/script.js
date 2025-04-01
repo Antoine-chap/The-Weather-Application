@@ -1,6 +1,6 @@
 
-import button1 from "./src/components/button.js"
-
+import button1 from "./components/button.js"
+import "./ui/style.css"
 button1();
 
 
