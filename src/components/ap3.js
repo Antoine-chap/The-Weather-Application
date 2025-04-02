@@ -77,7 +77,6 @@ async function Cards(result) {
   
   localStorage.setItem(storageKey, JSON.stringify(result));
 
-
   for (const [date, forecasts] of Object.entries(forecastsByDay)) {
     const card = document.createElement('div');
     card.className = 'weather-card';
